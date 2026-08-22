@@ -1,0 +1,19 @@
+{
+  "name": "specimen-cli",
+  "version": "0.1.0",
+  "description": "Specimen — audit visuel anti-générique + prescription de direction artistique contrainte, pour Cursor, Claude Code, Windsurf, VS Code, Codex, et le mode chat.",
+  "type": "module",
+  "bin": {
+    "specimen": "./bin/cli.js"
+  },
+  "main": "src/index.js",
+  "scripts": {
+    "mcp": "node src/mcp-server.js",
+    "mcp:http": "node src/http-server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "zod": "^3.23.8"
+  },
+  "license": "MIT"
+}
