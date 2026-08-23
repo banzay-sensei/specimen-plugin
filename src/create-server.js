@@ -37,7 +37,7 @@ export const TOOLS = [
       properties: {
         directionKey: {
           type: 'string',
-          description: 'Clé de la direction (voir specimen_list_directions): brutalist | heisei | scandi | y2k'
+          description: 'Clé de la direction (voir specimen_list_directions): brutalist | heisei | scandi | y2k | editorial'
         }
       },
       required: ['directionKey']

@@ -8,11 +8,17 @@ function randomSeed() {
 }
 
 /**
- * Builds the constrained-generation brief for a direction. This is the
- * exact same rule set used by the web MVP's Anthropic API call — but here
- * it is returned as data/text so ANY calling model (Cursor's agent,
- * Claude Code, Codex, or a person pasting into chat) can do the generation
- * itself, without Specimen needing to hold an API key.
+ * Builds the constrained-generation brief for a direction. Returned as
+ * text/data so ANY calling model (Cursor's agent, Claude Code, Codex, or a
+ * person pasting into chat) can do the generation itself.
+ *
+ * Three layers are always included, in order:
+ *  1. Candidate values (WHAT to pick from) — colors, fonts, numeric ranges
+ *  2. Color harmony (HOW MUCH of each — distribution discipline)
+ *  3. Layout principles (HOW elements should be arranged spatially)
+ * Layers 2 and 3 exist specifically because a result can use only
+ * "correct" candidate colors and still look cluttered or clumsy — the
+ * relationship between elements matters as much as each element on its own.
  */
 export function buildBrief(directionKey) {
   const dir = getDirection(directionKey);
@@ -25,7 +31,7 @@ export function buildBrief(directionKey) {
 Direction imposée : "${dir.name}" (${dir.tag}).
 ${dir.desc}
 
-Choisis des valeurs STRICTEMENT à l'intérieur des contraintes suivantes. Ne sors JAMAIS de ces listes ou plages, même si une autre valeur te semblerait "plus jolie".
+=== 1. VALEURS CANDIDATES (choisis STRICTEMENT dedans, jamais en dehors) ===
 
 primary_candidates: ${JSON.stringify(c.primary)}
 secondary_candidates: ${JSON.stringify(c.secondary)}
@@ -41,12 +47,29 @@ spacing_base_range_px: ${JSON.stringify(c.spacingRange)}
 border_width_range_px: ${JSON.stringify(c.borderWidthRange)}
 shadow_style_guidance: "${c.shadowStyle}"
 
-Choisis UNE valeur par rôle de couleur (parmi les candidats donnés), une police par rôle (parmi les candidats donnés), UN nombre précis dans chaque plage numérique (varie tes choix d'une génération à l'autre, n'utilise pas toujours le même nombre rond), et écris une valeur CSS box-shadow concrète cohérente avec le style demandé.
+=== 2. HARMONIE DES COULEURS (règle de distribution, pas seulement de choix) ===
+
+${dir.colorHarmony}
+
+Cette règle prime sur l'envie de "faire ressortir" plusieurs couleurs à la fois. Une palette qui respecte les bonnes valeurs candidates mais ignore cette répartition produira un résultat criard, pas élégant.
+
+=== 3. PRINCIPES DE MISE EN PAGE (à appliquer à TOUS les composants que tu génères ensuite) ===
+
+- Grille : ${dir.layout.grid}
+- Espacement : ${dir.layout.whitespace}
+- Hiérarchie visuelle : ${dir.layout.hierarchy}
+- Alignement : ${dir.layout.alignment}
+
+Ces principes s'appliquent à la disposition réelle des éléments (boutons, cartes, sections, formulaires) — pas seulement aux valeurs de tokens. Un token correct mal disposé (mauvais espacement, hiérarchie plate, alignement au hasard) donne toujours un résultat qui a l'air générique ou bricolé, même avec la bonne palette.
+
+=== Génère maintenant ===
+
+Choisis UNE valeur par rôle de couleur (en respectant la répartition décrite en section 2), une police par rôle, UN nombre précis dans chaque plage numérique (varie tes choix d'une génération à l'autre, n'utilise pas toujours le même nombre rond), et écris une valeur CSS box-shadow concrète cohérente avec le style demandé.
 
 Grain de variation pour cette génération (graine de hasard interne, ne pas la répéter mot pour mot dans la sortie) : "${seed}"
 
 Réponds avec EXACTEMENT ce schéma JSON, valeurs remplies, rien d'autre :
 {"primary":"#hex","secondary":"#hex","background":"#hex","surface":"#hex","text":"#hex","accent":"#hex","onPrimary":"#hex","onAccent":"#hex","fontDisplay":"nom","fontBody":"nom","fontMono":"nom","radiusPx":number,"spacingBasePx":number,"borderWidthPx":number,"boxShadow":"valeur css"}
 
-Une fois ce JSON produit, applique ces tokens à TOUS les composants que tu génères pour ce projet (boutons, cartes, inputs, navigation, modales, états hover/focus/disabled). Ne reviens jamais vers des valeurs "safe" par défaut (pas de retour à Inter, pas de dégradé indigo/violet, pas d'ombre douce diffuse générique). Respecte le contraste WCAG AA entre le texte et les fonds.`;
+Une fois ce JSON produit, applique-le à TOUS les composants que tu génères pour ce projet (boutons, cartes, inputs, navigation, modales, états hover/focus/disabled), en respectant à la fois la répartition de couleurs (section 2) et les principes de mise en page (section 3) — pas seulement les valeurs de tokens prises isolément. Ne reviens jamais vers des valeurs "safe" par défaut (pas de retour à Inter, pas de dégradé indigo/violet, pas d'ombre douce diffuse générique). Respecte le contraste WCAG AA entre le texte et les fonds.`;
 }

@@ -58,6 +58,8 @@ export function buildSkill(t, directionKey) {
   const dir = getDirection(directionKey);
   const dirName = dir ? dir.name : directionKey;
   const dirDesc = dir ? dir.desc : '';
+  const harmony = dir ? dir.colorHarmony : '';
+  const layout = dir ? dir.layout : null;
   return `# ${dirName} — Design Skill (généré par Specimen)
 
 ## Direction
@@ -85,8 +87,19 @@ ${dirDesc}
 - Épaisseur de bordure: ${t.borderWidthPx}px
 - Ombre signature: ${t.boxShadow}
 
+## Harmonie des couleurs (à respecter, pas seulement les valeurs ci-dessus)
+${harmony}
+
+## Mise en page${layout ? `
+- Grille : ${layout.grid}
+- Espacement : ${layout.whitespace}
+- Hiérarchie : ${layout.hierarchy}
+- Alignement : ${layout.alignment}` : ''}
+
 ## Instructions pour l'agent IA
 Applique ces tokens à TOUS les composants générés (boutons, cartes, inputs, navigation, modales).
+Respecte la répartition de couleurs décrite ci-dessus — ne fais jamais cohabiter plusieurs couleurs saturées en pleine surface sur un même écran, même si chacune prise isolément est une valeur autorisée.
+Respecte les principes de mise en page ci-dessus autant que les tokens eux-mêmes : un token correct mal disposé donne toujours un résultat qui a l'air générique.
 Ne remplace jamais ces valeurs par des équivalents "safe" (pas de retour à Inter, pas de dégradé indigo/violet, pas d'ombre douce diffuse par défaut).
 Respecte le contraste WCAG AA entre le texte et les fonds.
 `;

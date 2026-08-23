@@ -2,7 +2,7 @@
 
 Diagnose le générique. Prescris le distinct.
 
-Un seul cœur logique (scanner de patterns + 4 directions artistiques curées + génération de tokens sous contrainte), distribué sous **quatre formes** pour couvrir le plus de monde possible.
+Un seul cœur logique (scanner de patterns + 5 directions artistiques curées + génération de tokens sous contrainte), distribué sous **quatre formes** pour couvrir le plus de monde possible.
 
 | Tu utilises... | Passe par... |
 |---|---|
@@ -16,7 +16,7 @@ Les quatre puisent dans les mêmes fichiers sources (`src/directions.js`, `src/s
 ## Comment ça marche
 
 1. **Scan** — analyse un extrait de code et détecte 10 signaux de design générique (dégradé violet/bleu, glassmorphism, police par défaut, structure hero+3cards, etc). Sort un score sur 100.
-2. **Directions** — 4 directions artistiques curées (Signal Brutaliste, Terminal Heisei, Quiétude Scandinave, Chrome Y2K), chacune avec des règles strictes : palettes candidates (pas une couleur fixe), polices autorisées, plages de rayon/espacement/bordure, style d'ombre.
+2. **Directions** — 5 directions artistiques curées (Signal Brutaliste, Terminal Heisei, Quiétude Scandinave, Chrome Y2K, Éditorial Précis), chacune avec des règles strictes : palettes candidates (pas une couleur fixe), polices autorisées, plages de rayon/espacement/bordure, style d'ombre.
 3. **Prescription sous contrainte** — Specimen ne génère pas les tokens lui-même. Il renvoie le brief de contraintes au modèle déjà connecté à l'outil (l'agent Cursor, Claude Code, ou le chat). C'est ce modèle qui choisit et compose à l'intérieur des règles — pas de clé API à gérer côté Specimen, ça marche avec n'importe quel modèle derrière n'importe quel outil.
 4. **Export** — CSS variables, extrait de config Tailwind, ou fichier `SKILL.md` prêt à committer.
 
@@ -79,7 +79,7 @@ Ouvre [`setup/chat-mode.md`](./setup/chat-mode.md) — deux fichiers à copier-c
 | Outil | Rôle |
 |---|---|
 | `specimen_scan_code` | Analyse un extrait de code, retourne score + signaux détectés |
-| `specimen_list_directions` | Liste les 4 directions disponibles |
+| `specimen_list_directions` | Liste les 5 directions disponibles |
 | `specimen_prescribe_direction` | Retourne le brief de contraintes d'une direction — l'agent génère lui-même les tokens |
 | `specimen_build_export` | Formate un jeu de tokens en CSS / Tailwind / SKILL.md |
 

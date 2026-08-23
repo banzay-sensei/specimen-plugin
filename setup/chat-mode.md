@@ -18,6 +18,7 @@ Choisis une direction et ouvre le fichier correspondant :
 | Terminal Heisei | [`chat-prompts/heisei.md`](../chat-prompts/heisei.md) |
 | Quiétude Scandinave | [`chat-prompts/scandi.md`](../chat-prompts/scandi.md) |
 | Chrome Y2K | [`chat-prompts/y2k.md`](../chat-prompts/y2k.md) |
+| Éditorial Précis | [`chat-prompts/editorial.md`](../chat-prompts/editorial.md) |
 
 Copie tout le contenu du fichier dans le même chat (à la suite du diagnostic, pour garder le contexte), colle ton code juste après, et demande au modèle d'appliquer la direction. Il va générer un jeu de tokens JSON en respectant les contraintes du fichier, puis styliser ton code avec.
 
