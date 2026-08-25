@@ -8,6 +8,7 @@ import { scan } from './scanner.js';
 import { listDirections, getDirection } from './directions.js';
 import { buildBrief } from './brief.js';
 import { buildExport } from './export.js';
+import { recommendDirection } from './recommend.js';
 
 export const TOOLS = [
   {
@@ -41,6 +42,18 @@ export const TOOLS = [
         }
       },
       required: ['directionKey']
+    }
+  },
+  {
+    name: 'specimen_recommend_direction',
+    description:
+      "À partir d'une description de niche/secteur (ex: \"fintech B2B\", \"marque de cuisine saine\", \"outil développeur\"), recommande une direction artistique adaptée. IMPORTANT : cet outil ne suit PAS les conventions chromatiques génériques du secteur (bleu pour la fintech, vert pour le bien-être, noir/or pour le luxe) — il recommande volontairement une direction qui s'en démarque, avec une justification explicite, tout en signalant quelle est la convention habituelle pour que l'utilisateur fasse un choix éclairé plutôt que de suivre un réflexe. Utilise cet outil quand l'utilisateur décrit son secteur/sa marque avant d'avoir choisi une direction.",
+    inputSchema: {
+      type: 'object',
+      properties: {
+        niche: { type: 'string', description: 'Description libre du secteur, de la marque ou du public cible (ex: "application de méditation pour cadres stressés")' }
+      },
+      required: ['niche']
     }
   },
   {
@@ -101,6 +114,15 @@ export function createSpecimenServer() {
         }
         const brief = buildBrief(directionKey);
         return { content: [{ type: 'text', text: brief }] };
+      }
+
+      if (name === 'specimen_recommend_direction') {
+        const { niche } = args;
+        if (typeof niche !== 'string' || !niche.trim()) {
+          throw new Error('Le paramètre "niche" est requis et doit être une chaîne non vide.');
+        }
+        const result = recommendDirection(niche);
+        return { content: [{ type: 'text', text: JSON.stringify(result, null, 2) }] };
       }
 
       if (name === 'specimen_build_export') {

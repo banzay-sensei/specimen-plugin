@@ -42,7 +42,16 @@ export const DIRECTIONS = {
       grid: "Grille stricte et visible, colonnes égales, gouttières nettes — la grille elle-même est un élément graphique, pas juste un outil d'alignement caché.",
       whitespace: "Espacement serré et régulier (base 4-8px), peu de marge de respiration — la densité fait partie du style.",
       hierarchy: "Hiérarchie par la taille et l'épaisseur de bordure plutôt que par la couleur : un seul élément à la fois peut être 'le plus gros', jamais deux en concurrence.",
-      alignment: "Alignement strict sur la grille, jamais de décalage optique 'doux' — les angles et les arêtes doivent tomber pile sur les lignes de grille."
+      alignment: "Alignement strict sur la grille, jamais de décalage optique 'doux' — les angles et les arêtes doivent tomber pile sur les lignes de grille.",
+      responsive: {
+        desktop: "Grille multi-colonnes dense avec sidebar de navigation épaisse, bordée d'un trait plein — pas de sidebar flottante ou translucide.",
+        mobile: "Bottom bar à icônes larges et cadrées, cartes empilées avec bordures pleines conservées (jamais 'adoucies' pour le mobile)."
+      },
+      components: {
+        nav: "Liens ou icônes avec état actif marqué par un bloc de couleur plein, pas par un simple soulignement.",
+        cards: "Bordure épaisse systématique, jamais de carte 'flottante' sans contour visible.",
+        icons: "Icônes géométriques simples, traits épais, jamais de style filaire fin ou décoratif."
+      }
     }
   },
   heisei: {
@@ -71,7 +80,16 @@ export const DIRECTIONS = {
       grid: "Grille monospace implicite — tout s'aligne comme sur une grille de caractères, colonnes régulières façon terminal.",
       whitespace: "Espacement compact et technique, comme une sortie de commande — pas de grand vide décoratif.",
       hierarchy: "Hiérarchie par la luminosité et l'intensité du glow, pas par la taille : l'élément actif/important brille plus, le reste reste sobre et légèrement atténué.",
-      alignment: "Alignement gauche systématique façon flux de log, ponctué de séparateurs fins plutôt que de blocs isolés."
+      alignment: "Alignement gauche systématique façon flux de log, ponctué de séparateurs fins plutôt que de blocs isolés.",
+      responsive: {
+        desktop: "TopNav fine façon barre de statut système, contenu principal en flux vertical unique plutôt qu'en grille large.",
+        mobile: "Menu tiroir (hamburger) façon console, jamais de bottom bar arrondie — préférer une barre fine et rectangulaire."
+      },
+      components: {
+        nav: "État actif signalé par le glow et un curseur/marqueur façon terminal (>, _), pas par un fond coloré plein.",
+        cards: "Conteneurs à bordure fine unique, fond légèrement plus clair que le fond général — jamais d'ombre diffuse.",
+        icons: "Pictogrammes minimalistes façon glyphes monospace, ou icônes vectorielles très fines."
+      }
     }
   },
   scandi: {
@@ -100,7 +118,16 @@ export const DIRECTIONS = {
       grid: "Grille asymétrique et respirante, colonnes de largeurs inégales assumées plutôt qu'une symétrie parfaite.",
       whitespace: "Marge et espacement généreux (base 8-16px, souvent le double de l'intuition) — le vide est un matériau de composition à part entière, pas un reste.",
       hierarchy: "Hiérarchie portée presque uniquement par la taille de police et l'espacement — jamais par la couleur ni par des cadres appuyés.",
-      alignment: "Alignement sur une seule colonne dominante à la fois, décalages doux assumés plutôt qu'une grille rigide."
+      alignment: "Alignement sur une seule colonne dominante à la fois, décalages doux assumés plutôt qu'une grille rigide.",
+      responsive: {
+        desktop: "Sidebar fine et discrète (icônes + labels espacés), large zone de respiration autour du contenu principal.",
+        mobile: "Cartes empilées avec marge extérieure généreuse, bottom bar minimale à 3-4 icônes maximum, jamais surchargée."
+      },
+      components: {
+        nav: "État actif signalé par un trait fin ou un changement de poids typographique, jamais par un fond plein saturé.",
+        cards: "Fond à peine différencié du fond général (nuance de gris/beige très proche), bordure quasi invisible ou absente.",
+        icons: "Icônes fines au trait, style linéaire léger — jamais pleines ni épaisses."
+      }
     }
   },
   y2k: {
@@ -129,7 +156,16 @@ export const DIRECTIONS = {
       grid: "Grille avec chevauchements assumés et profondeur (éléments qui se superposent légèrement) plutôt qu'une grille plate.",
       whitespace: "Espacement resserré autour des éléments graphiques marquants, mais avec des respirations franches entre les grands blocs.",
       hierarchy: "Hiérarchie par la brillance et la profondeur (ombres/lueurs) plutôt que par la seule taille — un halo signale l'importance.",
-      alignment: "Alignement sur grille avec légers décalages en profondeur (z-index), jamais un aplat totalement plat."
+      alignment: "Alignement sur grille avec légers décalages en profondeur (z-index), jamais un aplat totalement plat.",
+      responsive: {
+        desktop: "Sidebar chromée avec effets de profondeur (légère ombre/glow sur l'élément actif), grille avec superpositions décoratives.",
+        mobile: "Bottom bar avec effet chromé/glossy, icône active surélevée visuellement (légère ombre ou halo)."
+      },
+      components: {
+        nav: "État actif marqué par un halo coloré ou un effet de surélévation (ombre portée colorée), pas juste un changement de teinte plate.",
+        cards: "Bordure en dégradé holographique fine ou reflet chromé subtil sur un des bords.",
+        icons: "Icônes à finition chromée ou légèrement dégradée, jamais plates ni monochromes basiques."
+      }
     }
   },
   editorial: {
@@ -158,7 +194,16 @@ export const DIRECTIONS = {
       grid: "Grille éditoriale classique façon mise en page de magazine — colonnes de texte larges, marges extérieures généreuses et constantes.",
       whitespace: "Espacement le plus généreux des cinq directions (base 10-20px) — le silence visuel est la signature principale de cette direction.",
       hierarchy: "Hiérarchie quasi exclusivement typographique : variations d'échelle et de graisse plutôt que de couleur, de cadre ou d'ombre.",
-      alignment: "Alignement sobre et constant (une seule marge de référence sur toute la page), jamais de centrage systématique ni de superposition."
+      alignment: "Alignement sobre et constant (une seule marge de référence sur toute la page), jamais de centrage systématique ni de superposition.",
+      responsive: {
+        desktop: "Colonne de contenu large et centrée façon article, navigation réduite à un fil discret en haut de page.",
+        mobile: "Une seule colonne stricte, aucune barre de navigation flottante — un menu texte simple en haut suffit."
+      },
+      components: {
+        nav: "Liens texte simples, état actif signalé par un changement de graisse ou un très fin trait sous le mot — jamais de bouton plein.",
+        cards: "Séparation par un filet fin ou un espace généreux plutôt qu'un encadré — la 'carte' au sens visuel classique est à éviter.",
+        icons: "Usage minimal des icônes, préférer le mot écrit ; si une icône est nécessaire, trait très fin et discret."
+      }
     }
   }
 };

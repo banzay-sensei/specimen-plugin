@@ -94,7 +94,14 @@ ${harmony}
 - Grille : ${layout.grid}
 - Espacement : ${layout.whitespace}
 - Hiérarchie : ${layout.hierarchy}
-- Alignement : ${layout.alignment}` : ''}
+- Alignement : ${layout.alignment}
+- Desktop : ${layout.responsive.desktop}
+- Mobile : ${layout.responsive.mobile}
+
+## Composants clés
+- Navigation : ${layout.components.nav}
+- Cartes : ${layout.components.cards}
+- Icônes : ${layout.components.icons}` : ''}
 
 ## Instructions pour l'agent IA
 Applique ces tokens à TOUS les composants générés (boutons, cartes, inputs, navigation, modales).

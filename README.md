@@ -80,7 +80,8 @@ Ouvre [`setup/chat-mode.md`](./setup/chat-mode.md) — deux fichiers à copier-c
 |---|---|
 | `specimen_scan_code` | Analyse un extrait de code, retourne score + signaux détectés |
 | `specimen_list_directions` | Liste les 5 directions disponibles |
-| `specimen_prescribe_direction` | Retourne le brief de contraintes d'une direction — l'agent génère lui-même les tokens |
+| `specimen_prescribe_direction` | Retourne le brief de contraintes d'une direction (couleurs, layout, responsive, composants) — l'agent génère lui-même les tokens |
+| `specimen_recommend_direction` | Recommande une direction à partir d'une niche/secteur décrite, en évitant volontairement les conventions chromatiques génériques du secteur |
 | `specimen_build_export` | Formate un jeu de tokens en CSS / Tailwind / SKILL.md |
 
 ## Développement local

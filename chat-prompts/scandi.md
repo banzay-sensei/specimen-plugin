@@ -40,13 +40,24 @@ Cette règle prime sur l'envie de "faire ressortir" plusieurs couleurs à la foi
 
 Ces principes s'appliquent à la disposition réelle des éléments (boutons, cartes, sections, formulaires) — pas seulement aux valeurs de tokens. Un token correct mal disposé (mauvais espacement, hiérarchie plate, alignement au hasard) donne toujours un résultat qui a l'air générique ou bricolé, même avec la bonne palette.
 
+=== 4. DÉCLINAISON RESPONSIVE ===
+
+- Desktop : Sidebar fine et discrète (icônes + labels espacés), large zone de respiration autour du contenu principal.
+- Mobile : Cartes empilées avec marge extérieure généreuse, bottom bar minimale à 3-4 icônes maximum, jamais surchargée.
+
+=== 5. COMPOSANTS CLÉS ===
+
+- Navigation : État actif signalé par un trait fin ou un changement de poids typographique, jamais par un fond plein saturé.
+- Cartes : Fond à peine différencié du fond général (nuance de gris/beige très proche), bordure quasi invisible ou absente.
+- Icônes : Icônes fines au trait, style linéaire léger — jamais pleines ni épaisses.
+
 === Génère maintenant ===
 
 Choisis UNE valeur par rôle de couleur (en respectant la répartition décrite en section 2), une police par rôle, UN nombre précis dans chaque plage numérique (varie tes choix d'une génération à l'autre, n'utilise pas toujours le même nombre rond), et écris une valeur CSS box-shadow concrète cohérente avec le style demandé.
 
-Grain de variation pour cette génération (graine de hasard interne, ne pas la répéter mot pour mot dans la sortie) : "silex-5004"
+Grain de variation pour cette génération (graine de hasard interne, ne pas la répéter mot pour mot dans la sortie) : "silex-6753"
 
 Réponds avec EXACTEMENT ce schéma JSON, valeurs remplies, rien d'autre :
 {"primary":"#hex","secondary":"#hex","background":"#hex","surface":"#hex","text":"#hex","accent":"#hex","onPrimary":"#hex","onAccent":"#hex","fontDisplay":"nom","fontBody":"nom","fontMono":"nom","radiusPx":number,"spacingBasePx":number,"borderWidthPx":number,"boxShadow":"valeur css"}
 
-Une fois ce JSON produit, applique-le à TOUS les composants que tu génères pour ce projet (boutons, cartes, inputs, navigation, modales, états hover/focus/disabled), en respectant à la fois la répartition de couleurs (section 2) et les principes de mise en page (section 3) — pas seulement les valeurs de tokens prises isolément. Ne reviens jamais vers des valeurs "safe" par défaut (pas de retour à Inter, pas de dégradé indigo/violet, pas d'ombre douce diffuse générique). Respecte le contraste WCAG AA entre le texte et les fonds.
+Une fois ce JSON produit, applique-le à TOUS les composants que tu génères pour ce projet (boutons, cartes, inputs, navigation, modales, états hover/focus/disabled), en respectant à la fois la répartition de couleurs (section 2), les principes de mise en page (section 3), la déclinaison responsive (section 4) et le traitement des composants clés (section 5) — pas seulement les valeurs de tokens prises isolément. Ne reviens jamais vers des valeurs "safe" par défaut (pas de retour à Inter, pas de dégradé indigo/violet, pas d'ombre douce diffuse générique). Respecte le contraste WCAG AA entre le texte et les fonds.
